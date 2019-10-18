@@ -12,6 +12,7 @@ public class InputFinanceRecord extends IdHolder {
     @Enumerated
     private InputFinanceType type;
 
+    @OneToMany(mappedBy = "record")
     private List<FinanceReason> reasons;
 
     public InputFinanceRecord() {

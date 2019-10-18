@@ -3,6 +3,7 @@ package ua.com.ladyshoes.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class FinanceReason extends IdHolder {
@@ -15,6 +16,9 @@ public class FinanceReason extends IdHolder {
 
     @Column
     private String note;
+
+    @ManyToOne
+    private InputFinanceRecord record;
 
     public FinanceReason() {
     }
