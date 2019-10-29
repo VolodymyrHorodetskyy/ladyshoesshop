@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class InputFinanceRecord extends IdHolder {
+public class InputFinanceRecord extends Audit {
 
     @Column
     private double amount;

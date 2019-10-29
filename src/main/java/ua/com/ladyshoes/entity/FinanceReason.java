@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class FinanceReason extends IdHolder {
+public class FinanceReason extends Audit {
 
     @Enumerated
     private InputFinanceType type;
