@@ -12,6 +12,15 @@ public class AddInputFinanceRecordRequest {
 
     private List<Long> reasonsIds;
 
+    public AddInputFinanceRecordRequest() {
+    }
+
+    public AddInputFinanceRecordRequest(double amount, InputFinanceType type, List<Long> reasonsIds) {
+        this.amount = amount;
+        this.type = type;
+        this.reasonsIds = reasonsIds;
+    }
+
     public double getAmount() {
         return amount;
     }

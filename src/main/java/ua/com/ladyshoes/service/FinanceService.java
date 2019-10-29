@@ -22,7 +22,8 @@ public class FinanceService {
 
     public InputFinanceRecord addRecord(AddInputFinanceRecordRequest recordRequest) {
         List<FinanceReason> reasons = reasonRepository.findAllById(recordRequest.getReasonsIds());
-        InputFinanceRecord inputFinanceRecord = new InputFinanceRecord(recordRequest.getAmount(), recordRequest.getType(), reasons);
+        InputFinanceRecord inputFinanceRecord = new InputFinanceRecord(recordRequest.getAmount(), recordRequest.getType());
+        inputFinanceRecord.setReasons(reasons);
         return financeRepository.save(inputFinanceRecord);
     }
 

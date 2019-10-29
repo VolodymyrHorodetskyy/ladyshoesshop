@@ -1,9 +1,7 @@
 package ua.com.ladyshoes.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class FinanceReason extends IdHolder {
@@ -17,8 +15,8 @@ public class FinanceReason extends IdHolder {
     @Column
     private String note;
 
-    @ManyToOne
-    private InputFinanceRecord record;
+    @ManyToMany
+    private List<InputFinanceRecord> records;
 
     public FinanceReason() {
     }
@@ -51,5 +49,13 @@ public class FinanceReason extends IdHolder {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public List<InputFinanceRecord> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<InputFinanceRecord> records) {
+        this.records = records;
     }
 }

@@ -12,10 +12,15 @@ public class InputFinanceRecord extends IdHolder {
     @Enumerated
     private InputFinanceType type;
 
-    @OneToMany(mappedBy = "record")
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<FinanceReason> reasons;
 
     public InputFinanceRecord() {
+    }
+
+    public InputFinanceRecord(double amount, InputFinanceType type) {
+        this.amount = amount;
+        this.type = type;
     }
 
     public InputFinanceRecord(double amount, InputFinanceType type, List<FinanceReason> reasons) {
@@ -48,5 +53,13 @@ public class InputFinanceRecord extends IdHolder {
 
     public void setReasons(List<FinanceReason> reasons) {
         this.reasons = reasons;
+    }
+
+    @Override
+    public String toString() {
+        return "InputFinanceRecord{" +
+                "amount=" + amount +
+                ", type=" + type +
+                '}';
     }
 }
