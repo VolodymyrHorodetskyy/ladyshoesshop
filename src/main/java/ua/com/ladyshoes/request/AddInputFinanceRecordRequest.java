@@ -12,6 +12,8 @@ public class AddInputFinanceRecordRequest {
 
     private List<Long> reasonsIds;
 
+    private int model;
+
     public AddInputFinanceRecordRequest() {
     }
 
@@ -43,5 +45,13 @@ public class AddInputFinanceRecordRequest {
 
     public void setReasonsIds(List<Long> reasonsIds) {
         this.reasonsIds = reasonsIds;
+    }
+
+    public int getModel() {
+        return model;
+    }
+
+    public void setModel(int model) {
+        this.model = model;
     }
 }

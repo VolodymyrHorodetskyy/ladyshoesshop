@@ -12,15 +12,19 @@ public class InputFinanceRecord extends Audit {
     @Enumerated
     private InputFinanceType type;
 
+    @ManyToMany
+    private Shoe shoe;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<FinanceReason> reasons;
 
     public InputFinanceRecord() {
     }
 
-    public InputFinanceRecord(double amount, InputFinanceType type) {
+    public InputFinanceRecord(double amount, InputFinanceType type, Shoe shoe) {
         this.amount = amount;
         this.type = type;
+        this.shoe = shoe;
     }
 
     public InputFinanceRecord(double amount, InputFinanceType type, List<FinanceReason> reasons) {
@@ -28,7 +32,6 @@ public class InputFinanceRecord extends Audit {
         this.type = type;
         this.reasons = reasons;
     }
-
 
 
     public double getAmount() {
@@ -53,6 +56,14 @@ public class InputFinanceRecord extends Audit {
 
     public void setReasons(List<FinanceReason> reasons) {
         this.reasons = reasons;
+    }
+
+    public Shoe getShoe() {
+        return shoe;
+    }
+
+    public void setShoe(Shoe shoe) {
+        this.shoe = shoe;
     }
 
     @Override

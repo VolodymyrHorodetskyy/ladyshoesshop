@@ -11,6 +11,7 @@ import ua.com.ladyshoes.service.FinanceService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/finance")
 public class FinanceController {
 
