@@ -27,11 +27,11 @@ public class FinanceService {
 
     public InputFinanceRecord addRecord(AddInputFinanceRecordRequest recordRequest) {
         List<FinanceReason> reasons = reasonRepository.findAllById(recordRequest.getReasonsIds());
-        int model = recordRequest.getModel();
+        String model = recordRequest.getModel();
         Shoe shoe = null;
-        if (model != 0) {
+        if (model != null) {
             List<Shoe> shoes = shoeRepository.findByModel(model);
-            if (CollectionUtils.isEmpty(shoes)) {
+            if (!CollectionUtils.isEmpty(shoes)) {
                 shoe = shoes.get(0);
             }
         }

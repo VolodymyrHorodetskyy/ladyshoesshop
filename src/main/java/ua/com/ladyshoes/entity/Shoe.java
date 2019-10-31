@@ -4,12 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Shoe extends Audit {
 
-    @Column
-    private int model;
+    @Column(nullable = false)
+    private String model;
 
     @Column
     private double price;
@@ -17,7 +18,7 @@ public class Shoe extends Audit {
     @OneToMany(mappedBy = "shoe")
     private List<InputFinanceRecord> records;
 
-    public Shoe(int model, double price) {
+    public Shoe(String model, double price) {
         this.model = model;
         this.price = price;
     }
@@ -25,11 +26,11 @@ public class Shoe extends Audit {
     public Shoe() {
     }
 
-    public int getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(int model) {
+    public void setModel(String model) {
         this.model = model;
     }
 
@@ -49,5 +50,17 @@ public class Shoe extends Audit {
         this.records = records;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Shoe)) return false;
+        Shoe shoe = (Shoe) o;
+        return Double.compare(shoe.price, price) == 0 &&
+                model.equals(shoe.model);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(model, price);
+    }
 }

@@ -12,7 +12,7 @@ public class AddInputFinanceRecordRequest {
 
     private List<Long> reasonsIds;
 
-    private int model;
+    private String model;
 
     public AddInputFinanceRecordRequest() {
     }
@@ -21,6 +21,13 @@ public class AddInputFinanceRecordRequest {
         this.amount = amount;
         this.type = type;
         this.reasonsIds = reasonsIds;
+    }
+
+    public AddInputFinanceRecordRequest(double amount, InputFinanceType type, List<Long> reasonsIds, String model) {
+        this.amount = amount;
+        this.type = type;
+        this.reasonsIds = reasonsIds;
+        this.model = model;
     }
 
     public double getAmount() {
@@ -47,11 +54,11 @@ public class AddInputFinanceRecordRequest {
         this.reasonsIds = reasonsIds;
     }
 
-    public int getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(int model) {
+    public void setModel(String model) {
         this.model = model;
     }
 }

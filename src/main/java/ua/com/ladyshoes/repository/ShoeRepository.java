@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ShoeRepository extends JpaRepository<Shoe, Long> {
 
-    List<Shoe> findByModel(int model);
+    List<Shoe> findByModel(String model);
 
 }

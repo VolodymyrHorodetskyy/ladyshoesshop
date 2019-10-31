@@ -26,7 +26,7 @@ public class FillDB {
 
     @PostConstruct
     public void init() {
-        shoeService.addShoe(new Shoe(900, 700));
+        shoeService.addShoe(new Shoe("900", 700));
         itemService.createItem(new Item("Взуття кросівки"));
         reasonService.addFinanceReason(new FinanceReason(InputFinanceType.INCOME, "передпалата", "олх"));
     }
