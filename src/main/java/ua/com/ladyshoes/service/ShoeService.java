@@ -9,6 +9,10 @@ public class ShoeService {
 
     private ShoeRepository shoeRepository;
 
+    public ShoeService(ShoeRepository shoeRepository) {
+        this.shoeRepository = shoeRepository;
+    }
+
     public Shoe addShoe(Shoe shoe) {
         return shoeRepository.save(shoe);
     }

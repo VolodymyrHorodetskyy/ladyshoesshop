@@ -1,9 +1,11 @@
 package ua.com.ladyshoes.entity;
 
 import javax.persistence.Column;
-import javax.persistence.ManyToMany;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 
+@Entity
 public class Shoe extends Audit {
 
     @Column
@@ -12,7 +14,7 @@ public class Shoe extends Audit {
     @Column
     private double price;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "shoe")
     private List<InputFinanceRecord> records;
 
     public Shoe(int model, double price) {

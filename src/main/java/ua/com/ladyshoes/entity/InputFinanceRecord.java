@@ -12,7 +12,7 @@ public class InputFinanceRecord extends Audit {
     @Enumerated
     private InputFinanceType type;
 
-    @ManyToMany
+    @ManyToOne
     private Shoe shoe;
 
     @ManyToMany(fetch = FetchType.EAGER)
