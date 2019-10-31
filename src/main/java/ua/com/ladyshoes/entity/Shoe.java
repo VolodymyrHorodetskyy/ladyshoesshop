@@ -1,5 +1,7 @@
 package ua.com.ladyshoes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -16,6 +18,7 @@ public class Shoe extends Audit {
     private double price;
 
     @OneToMany(mappedBy = "shoe")
+    @JsonIgnore
     private List<InputFinanceRecord> records;
 
     public Shoe(String model, double price) {
@@ -62,5 +65,13 @@ public class Shoe extends Audit {
     @Override
     public int hashCode() {
         return Objects.hash(model, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Shoe{" +
+                "model='" + model + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

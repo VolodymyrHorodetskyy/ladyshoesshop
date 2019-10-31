@@ -58,4 +58,13 @@ public class FinanceReason extends Audit {
     public void setRecords(List<InputFinanceRecord> records) {
         this.records = records;
     }
+
+    @Override
+    public String toString() {
+        return "FinanceReason{" +
+                "type=" + type +
+                ", reason='" + reason + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }
