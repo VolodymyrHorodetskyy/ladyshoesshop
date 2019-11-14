@@ -47,4 +47,8 @@ public class FinanceService {
         return financeRepository.findByRemovedFalse();
     }
 
+    public InputFinanceRecord getFinanceRecordById(Long id) {
+        return financeRepository.findById(id).orElse(null);
+    }
+
 }

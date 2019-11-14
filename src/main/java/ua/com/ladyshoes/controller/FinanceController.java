@@ -33,6 +33,11 @@ public class FinanceController {
         return financeService.getAllRecords();
     }
 
+    @GetMapping("/{id}")
+    public InputFinanceRecord getFinanceRecord(@PathVariable Long id) {
+        return financeService.getFinanceRecordById(id);
+    }
+
     @GetMapping("/reasons")
     public List<FinanceReason> getReasons(@RequestParam InputFinanceType inputFinanceType) {
         return reasonService.getFinanceReasons(inputFinanceType);
