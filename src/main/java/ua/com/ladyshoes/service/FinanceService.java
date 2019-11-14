@@ -26,7 +26,10 @@ public class FinanceService {
     }
 
     public InputFinanceRecord addRecord(AddInputFinanceRecordRequest recordRequest) {
-        List<FinanceReason> reasons = reasonRepository.findAllById(recordRequest.getReasonsIds());
+        List<FinanceReason> reasons = null;
+        if (!CollectionUtils.isEmpty(recordRequest.getReasonsIds())) {
+            reasons = reasonRepository.findAllById(recordRequest.getReasonsIds());
+        }
         String model = recordRequest.getModel();
         Shoe shoe = null;
         if (model != null) {
@@ -41,7 +44,7 @@ public class FinanceService {
     }
 
     public List<InputFinanceRecord> getAllRecords() {
-        return financeRepository.findAll();
+        return financeRepository.findByRemovedFalse();
     }
 
 }

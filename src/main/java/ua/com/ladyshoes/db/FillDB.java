@@ -1,6 +1,7 @@
 package ua.com.ladyshoes.db;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import ua.com.ladyshoes.entity.FinanceReason;
 import ua.com.ladyshoes.entity.InputFinanceType;
 import ua.com.ladyshoes.entity.Item;
@@ -26,9 +27,13 @@ public class FillDB {
 
     @PostConstruct
     public void init() {
-        shoeService.addShoe(new Shoe("900", 700));
-        itemService.createItem(new Item("Взуття кросівки"));
-        reasonService.addFinanceReason(new FinanceReason(InputFinanceType.INCOME, "передпалата", "олх"));
+        if (CollectionUtils.isEmpty(shoeService.getAllShoes())) {
+            shoeService.addShoe(new Shoe("900", 700));
+            itemService.createItem(new Item("Взуття кросівки"));
+            reasonService.addFinanceReason(new FinanceReason(InputFinanceType.INCOME, "передпалата", "олх"));
+            reasonService.addFinanceReason(new FinanceReason(InputFinanceType.INCOME, "повна оплата", "олх"));
+            reasonService.addFinanceReason(new FinanceReason(InputFinanceType.INCOME, "olx доставка", "олх"));
+        }
     }
 
 }

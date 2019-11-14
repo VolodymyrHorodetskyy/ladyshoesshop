@@ -18,6 +18,9 @@ public class InputFinanceRecord extends Audit {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<FinanceReason> reasons;
 
+    @Column
+    private boolean removed;
+
     public InputFinanceRecord() {
     }
 
