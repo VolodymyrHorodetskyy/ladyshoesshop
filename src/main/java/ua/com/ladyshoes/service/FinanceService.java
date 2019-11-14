@@ -51,4 +51,19 @@ public class FinanceService {
         return financeRepository.findById(id).orElse(null);
     }
 
+    public InputFinanceRecord removeFinanceRecord(Long id) {
+        InputFinanceRecord financeRecord = financeRepository.findById(id).orElse(null);
+        if (financeRecord != null) {
+            financeRecord.setRemoved(true);
+            return financeRepository.save(financeRecord);
+        } else {
+            throw new RuntimeException("Record is not found");
+        }
+    }
+
+    public Double calculateCurrentSum() {
+        List<InputFinanceRecord> records = financeRepository.findByRemovedFalse();
+        return records.stream().mapToDouble(value -> value.getAmount()).sum();
+    }
+
 }

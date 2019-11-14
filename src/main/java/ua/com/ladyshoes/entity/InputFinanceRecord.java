@@ -69,6 +69,14 @@ public class InputFinanceRecord extends Audit {
         this.shoe = shoe;
     }
 
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
+    }
+
     @Override
     public String toString() {
         return "InputFinanceRecord{" +

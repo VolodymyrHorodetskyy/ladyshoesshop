@@ -38,9 +38,19 @@ public class FinanceController {
         return financeService.getFinanceRecordById(id);
     }
 
+    @DeleteMapping("/{id}")
+    public InputFinanceRecord removeFinanceRecord(@PathVariable Long id) {
+        return financeService.removeFinanceRecord(id);
+    }
+
     @GetMapping("/reasons")
     public List<FinanceReason> getReasons(@RequestParam InputFinanceType inputFinanceType) {
         return reasonService.getFinanceReasons(inputFinanceType);
+    }
+
+    @GetMapping("/currentSum")
+    public Double getCurrentSum() {
+        return financeService.calculateCurrentSum();
     }
 
 }
