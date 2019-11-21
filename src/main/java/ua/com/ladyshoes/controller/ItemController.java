@@ -7,6 +7,7 @@ import ua.com.ladyshoes.service.ItemService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/item")
 public class ItemController {
 
