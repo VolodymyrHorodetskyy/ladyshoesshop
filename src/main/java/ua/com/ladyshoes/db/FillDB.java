@@ -45,6 +45,7 @@ public class FillDB {
 
             reasonService.addFinanceReason(new FinanceReason(InputFinanceType.EXPENSE, "реклама", ""));
             reasonService.addFinanceReason(new FinanceReason(InputFinanceType.EXPENSE, "собівартість", ""));
+            reasonService.addFinanceReason(new FinanceReason(InputFinanceType.EXPENSE, "повернення", ""));
         }
     }
 
