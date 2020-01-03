@@ -1,6 +1,7 @@
 package ua.com.ladyshoes.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ua.com.ladyshoes.dto.ItemDto;
 import ua.com.ladyshoes.entity.Item;
 import ua.com.ladyshoes.service.ItemService;
 
@@ -23,12 +24,12 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Item getById(@PathVariable Long id) {
+    public ItemDto getById(@PathVariable Long id) {
         return itemService.getItemById(id);
     }
 
     @GetMapping
-    public List<Item> getAllAvailable(){
+    public List<ItemDto> getAllAvailable(){
         return itemService.getAllItemsAvailable();
     }
 }

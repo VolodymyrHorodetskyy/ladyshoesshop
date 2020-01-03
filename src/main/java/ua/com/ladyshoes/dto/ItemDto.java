@@ -1,56 +1,40 @@
-package ua.com.ladyshoes.entity;
+package ua.com.ladyshoes.dto;
 
-import javax.persistence.*;
+import ua.com.ladyshoes.entity.Image;
+import ua.com.ladyshoes.entity.Material;
+
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-public class Item extends Audit {
+public class ItemDto {
 
-    @Column
+    private Long id;
+
     private String name;
 
-    @Column
     private String description;
 
-    @Column
     private Double price;
 
-    @Column
     private Double newPrice;
 
-    @Column
     private LocalDate newPriceTillDate;
 
-    @Column
     private Double cost;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    private long discountNumberOfDays;
+
     private Material material;
 
-    @Column
-    private boolean available = true;
-
-    @OneToMany(mappedBy = "item")
     private List<Image> images;
 
 
-    public Item() {
+    public Long getId() {
+        return id;
     }
 
-    public Item(String name) {
-        this.name = name;
-    }
-
-
-    public Item(String name, String description, Double price, Double cost, List<Image> images, Material material) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.cost = cost;
-        this.images = images;
-        this.material = material;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -101,20 +85,13 @@ public class Item extends Audit {
         this.cost = cost;
     }
 
-    public boolean isAvailable() {
-        return available;
+
+    public long getDiscountNumberOfDays() {
+        return discountNumberOfDays;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setDiscountNumberOfDays(long discountNumberOfDays) {
+        this.discountNumberOfDays = discountNumberOfDays;
     }
 
     public Material getMaterial() {
@@ -125,15 +102,11 @@ public class Item extends Audit {
         this.material = material;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", cost=" + cost +
-                ", available=" + available +
-                '}';
+    public List<Image> getImages() {
+        return images;
     }
 
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 }
