@@ -1,12 +1,12 @@
 package ua.com.ladyshoes.service;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import ua.com.ladyshoes.dto.GetAllItemsResponse;
 import ua.com.ladyshoes.dto.ItemDto;
 import ua.com.ladyshoes.entity.Item;
 import ua.com.ladyshoes.mapper.ItemDtoMapper;
 import ua.com.ladyshoes.repository.ItemRepository;
-
-import java.util.List;
 
 @Service
 public class ItemService {
@@ -25,8 +25,8 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public List<ItemDto> getAllItemsAvailable() {
-        return ItemDtoMapper.convertToDto(itemRepository.findAll());
+    public GetAllItemsResponse getAllItemsAvailable(int page, int size) {
+        return new GetAllItemsResponse(ItemDtoMapper.convertToDto(itemRepository.findByAvailableTrue(PageRequest.of(page, size))), itemRepository.countByAvailableTrue());
     }
 
 

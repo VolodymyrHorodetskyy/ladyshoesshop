@@ -1,11 +1,9 @@
 package ua.com.ladyshoes.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ua.com.ladyshoes.dto.GetAllItemsResponse;
 import ua.com.ladyshoes.dto.ItemDto;
-import ua.com.ladyshoes.entity.Item;
 import ua.com.ladyshoes.service.ItemService;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -28,8 +26,8 @@ public class ItemController {
         return itemService.getItemById(id);
     }
 
-    @GetMapping
-    public List<ItemDto> getAllAvailable(){
-        return itemService.getAllItemsAvailable();
+    @GetMapping(params = {"page", "size"})
+    public GetAllItemsResponse getAllAvailable(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return itemService.getAllItemsAvailable(page, size);
     }
 }
