@@ -30,6 +30,9 @@ public class Item extends Audit {
     private Material material;
 
     @Column
+    private Season season;
+
+    @Column
     private boolean available = true;
 
     @OneToMany(mappedBy = "item")
@@ -123,6 +126,14 @@ public class Item extends Audit {
 
     public void setMaterial(Material material) {
         this.material = material;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 
     @Override

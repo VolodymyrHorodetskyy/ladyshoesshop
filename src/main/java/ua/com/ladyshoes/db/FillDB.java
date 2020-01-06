@@ -36,6 +36,7 @@ public class FillDB {
 
 
             Item item = new Item("Взуття Dr Martens на коричневій підошві", "шкіра", 1299d, 780d, images, Material.LEATHER);
+            item.setSeason(Season.WINTER);
             itemService.createItem(item);
             images.add(new Image("test/195/DSC00780.jpg", item, true));
             images.add(new Image("test/195/DSC00758.jpg", item, false));
@@ -44,6 +45,7 @@ public class FillDB {
             Item item2 = new Item("Взуття Dr Martens на підошві з жовтою ниткою", "шкіра", 1599d, 780d, images, Material.LEATHER);
             item2.setNewPrice(1299d);
             item2.setNewPriceTillDate(LocalDate.now().plusDays(1));
+            item2.setSeason(Season.WINTER);
             itemService.createItem(item2);
             List images2 = new ArrayList<Image>();
             images2.add(new Image("test/190ж/DSC00708.jpg", item2, true));
